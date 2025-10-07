@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Masala • Iniciar sesión</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #faf7f2; color: #222; min-height: 100vh; }
+    .wrap { width: 100%; padding: 24px; }
+    .card { width: 100%; background: #fff; border: 1px solid #e6e1db; border-radius: 0; }
+    .card-hd { padding: 20px 24px; border-bottom: 1px solid #eee; font-weight: bold; font-size: 20px; }
+    .card-bd { padding: 24px; }
+    label { display: block; font-size: 14px; color: #666; margin-bottom: 6px; }
+    input[type="email"], input[type="password"] { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 14px; font-size: 16px; }
+    .btn { display: inline-block; padding: 12px 18px; border: 0; border-radius: 8px; background: #8b1e1e; color: #fff; font-weight: 600; font-size: 16px; }
+    .links { margin-top: 12px; font-size: 14px; }
+    .links a { color: #8b1e1e; text-decoration: none; margin-right: 16px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="card-hd">Iniciar sesión</div>
+      <div class="card-bd">
+        <form>
+          <label for="email">EMAIL</label>
+          <input id="email" type="email" placeholder="cliente@masala.com" />
+          <label for="pass">Contraseña</label>
+          <input id="pass" type="password" placeholder="••••••••" />
+          <button type="button" class="btn">Iniciar sesión</button>
+          <div class="links">
+            <a href="#">Crear cuenta</a>
+            <a href="#">¿Olvidaste tu contraseña?</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
