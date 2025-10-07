@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Masala • Agregar al carrito</title>
+  <style>
+    :root { --brand:#8b1e1e; --ink:#222; --muted:#666; --bg:#faf7f2; --ok:#126e1b; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Arial, sans-serif; background: var(--bg); color: var(--ink); min-height:100vh; }
+    .wrap { width:100%; padding:16px 20px 32px; }
+
+    .topbar { display:flex; align-items:center; gap:12px; border-bottom:1px solid #e9e4de; padding-bottom:12px; }
+    .brand { padding:8px 12px; border:1px solid #ddd; border-radius:6px; background:#fff; font-weight:700; }
+    .badge { margin:0 auto; display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:12px; background:#e8f0ff; color:#0b57d0; font-weight:700; }
+    .search { margin-left:auto; display:flex; align-items:center; gap:10px; }
+    .search label { color:var(--ink); font-size:14px; }
+    .search input { width:260px; padding:8px 10px; border:1px solid #ddd; border-radius:6px; }
+
+    .divider { height:1px; background:#ddd; margin:10px 0 16px; }
+
+    .toolbar { display:flex; justify-content:center; align-items:center; gap:12px; }
+    .tag { padding:6px 12px; border:1px solid #bbb; border-radius:6px; background:#fff; font-weight:600; }
+    .chips { display:flex; gap:12px; justify-content:center; margin:14px 0 8px; }
+    .chip { padding:8px 12px; border:1px solid #ddd; border-radius:6px; background:#fff; }
+
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:18px; margin-top:10px; }
+    @media (max-width:800px){ .grid { grid-template-columns:1fr; } }
+
+    .card { background:#fff; border:1px solid #cfc9c1; border-radius:6px; overflow:hidden; }
+    .card .media { background:#eee; }
+    .card img { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; }
+    .card .body { padding:10px 12px 14px; }
+    .title { margin:0 0 6px; font-weight:700; }
+    .price { margin:0 0 4px; color:#444; }
+    .qty { display:flex; align-items:center; justify-content:center; gap:18px; margin:6px 0 6px; }
+    .qty .btn { width:28px; height:28px; display:inline-flex; align-items:center; justify-content:center; border:1px solid #ddd; border-radius:6px; background:#fff; font-weight:700; }
+    .add { display:block; text-align:left; margin-top:4px; color:var(--brand); text-decoration:none; font-weight:700; }
+
+    /* NUEVO: sección inferior centrada y más ancha */
+    .summary { margin:28px auto 0; width:min(100%, 1000px); display:grid; gap:16px; padding:0 4px; }
+    @media (min-width: 900px){ .summary { grid-template-columns: 1fr 1fr; } }
+    .card-lite { background:#fff; border:1px solid #e6e1db; border-radius:10px; padding:16px; }
+    .toast-title { font-weight:700; margin-bottom:8px; }
+    .toast { display:inline-block; padding:10px 14px; border:1px dashed #cfe8d3; background:#eef9f0; color:var(--ok); border-radius:10px; }
+
+    .mini { padding:0; border:none; }
+    .mini .box { background:#fff; border:1px solid #e6e1db; border-radius:10px; padding:16px; }
+    .mini .hr { height:1px; background:#ddd; margin:10px 0 12px; }
+    .mini .row { display:flex; justify-content:space-between; padding:6px 0; }
+    .mini .total { border-top:1px solid #eee; margin-top:6px; padding-top:8px; font-weight:700; }
+    .mini-actions { margin-top:12px; display:flex; gap:12px; }
+    .link-red { color:var(--brand); text-decoration:none; }
+    .sep { color:#aaa; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">Masala</div>
+      <div class="badge">🧺 <span>3 consumibles en carrito</span></div>
+      <div class="search">
+        <label for="q">Buscar:</label>
+        <input id="q" type="search" />
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="toolbar">
+      <div class="tag">Categoría</div>
+    </div>
+    <div class="chips">
+      <button class="chip">Curry</button>
+      <button class="chip">Naan</button>
+      <button class="chip">Bebidas</button>
+      <button class="chip">Postres</button>
+      <button class="chip">Categorías</button>
+    </div>
+
+    <div class="grid">
+      <article class="card">
+        <div class="media">
+          <img src="https://www.tictacyummy.com/wp-content/uploads/2019/09/PortadaWeb-4.jpg" alt="Naan" />
+        </div>
+        <div class="body">
+          <p class="title">Naan</p>
+          <p class="price">$10500</p>
+          <div class="qty">
+            <a class="btn" href="#">−</a>
+            <span></span>
+            <a class="btn" href="#">+</a>
+          </div>
+          <a class="add" href="#">Agregar</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="media">
+          <img src="https://i.blogs.es/8c3360/pollo_curry/650_1200.jpg" alt="Curry de pollo" />
+        </div>
+        <div class="body">
+          <p class="title">Curry de pollo</p>
+          <p class="price">$7500</p>
+          <div class="qty">
+            <a class="btn" href="#">−</a>
+            <span></span>
+            <a class="btn" href="#">+</a>
+          </div>
+          <a class="add" href="#">Añadir</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- NUEVO layout centrado / estirado -->
+    <section class="summary">
+      <div class="card-lite">
+        <div class="toast-title">Toast:</div>
+        <div class="toast">Añadido al carrito</div>
+      </div>
+
+      <div class="mini">
+        <div class="box">
+          <div class="hr"></div>
+          <div class="row"><span>Curry pollo × 2</span><span>$12.000</span></div>
+          <div class="row"><span>Naan ajo × 1</span><span>$2.000</span></div>
+          <div class="row total"><span>Total:</span><span>$14.000</span></div>
+          <div class="mini-actions">
+            <a class="link-red" href="#">Ir al carrito</a>
+            <span class="sep">|</span>
+            <a class="link-red" href="#">Cerrar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
