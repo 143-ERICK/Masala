@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Masala • Menú por categorías</title>
+  <style>
+    :root { --brand:#8b1e1e; --ink:#222; --muted:#666; --bg:#faf7f2; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Arial, sans-serif; background: var(--bg); color: var(--ink); min-height:100vh; }
+    a { color: inherit; }
+
+    .header { display:flex; align-items:center; gap:16px; padding:16px 24px; background:#fff; border-bottom:1px solid #eee; }
+    .brand { font-weight:700; font-size:20px; }
+    .search { margin-left:auto; display:flex; align-items:center; gap:10px; }
+    .search label { color:var(--muted); font-size:14px; }
+    .search input { width:320px; max-width:60vw; padding:10px 12px; border:1px solid #ddd; border-radius:8px; font-size:15px; }
+
+    .toolbar { display:flex; align-items:center; justify-content:center; gap:12px; padding:14px 24px; border-bottom:1px solid #eee; background:#fff; }
+    .toolbar .title { padding:6px 12px; border:1px solid #ddd; border-radius:8px; font-weight:600; }
+
+    .chips { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; padding:14px 24px; }
+    .chip { padding:8px 12px; border:1px solid #ddd; border-radius:8px; background:#fff; font-size:14px; text-decoration:none; }
+
+    .panel { margin: 12px 24px 0; border:1px solid #cfc9c1; background:#fff; }
+    .section { padding: 18px; }
+    .section h2 { margin:0 0 10px; font-size:18px; border-bottom:1px solid #eee; padding-bottom:8px; }
+
+    .list { display:grid; gap:10px; }
+    .row { display:grid; grid-template-columns: 1fr auto; align-items:center; gap:12px; padding:8px 0; }
+    .name { font-size:15px; }
+    .add { color:#b00020; text-decoration:none; font-weight:600; }
+
+    .more-wrap { display:flex; flex-direction:column; align-items:center; gap:10px; padding:20px 0 40px; }
+    .more { display:inline-block; border:1px dashed #f6cfd5; color:#b00020; background:#fff6f7; padding:10px 14px; border-radius:10px; font-size:14px; }
+    .to-top { text-decoration:none; border:1px solid #ddd; padding:8px 12px; border-radius:8px; color:var(--brand); font-weight:600; }
+  </style>
+</head>
+<body id="top">
+  <header class="header">
+    <div class="brand">Masala</div>
+    <div class="search">
+      <label for="q">Buscar:</label>
+      <input id="q" type="search" placeholder="Naan, Curry, Chai…" />
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="title">Categoría</div>
+  </div>
+
+  <nav class="chips">
+    <a class="chip" href="#cat-curry">Curry</a>
+    <a class="chip" href="#cat-naan">Naan</a>
+    <a class="chip" href="#cat-bebidas">Bebidas</a>
+    <a class="chip" href="#cat-postres">Postres</a>
+    <a class="chip" href="#top">Categorías</a>
+  </nav>
+
+  <main class="panel">
+    <section id="cat-curry" class="section">
+      <h2>Curry</h2>
+      <div class="list">
+        <div class="row"><div class="name">Curry de pollo</div><a class="add" href="#">Agregar</a></div>
+        <div class="row"><div class="name">Curry de garbanzos</div><a class="add" href="#">Agregar</a></div>
+      </div>
+    </section>
+
+    <section id="cat-naan" class="section">
+      <h2>Naan</h2>
+      <div class="list">
+        <div class="row"><div class="name">Naan de ajo</div><a class="add" href="#">Agregar</a></div>
+        <div class="row"><div class="name">Naan con mantequilla</div><a class="add" href="#">Agregar</a></div>
+      </div>
+    </section>
+
+    <section id="cat-bebidas" class="section">
+      <h2>Bebidas</h2>
+      <div class="list">
+        <div class="row"><div class="name">Lassi de mango</div><a class="add" href="#">Agregar</a></div>
+        <div class="row"><div class="name">Chai latte</div><a class="add" href="#">Agregar</a></div>
+      </div>
+    </section>
+
+    <section id="cat-postres" class="section">
+      <h2>Postres</h2>
+      <div class="list">
+        <div class="row"><div class="name">Gulab jamun</div><a class="add" href="#">Agregar</a></div>
+        <div class="row"><div class="name">Kheer</div><a class="add" href="#">Agregar</a></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="more-wrap">
+    <div class="more">Cargando más productos</div>
+    <a class="to-top" href="#top">Volver arriba</a>
+  </div>
+</body>
+</html>
