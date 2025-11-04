@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Masala • Notificaciones</title>
+  <style>
+    :root { --brand:#8b1e1e; --ink:#222; --bg:#faf7f2; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Arial,sans-serif; background:var(--bg); color:var(--ink); min-height:100vh; }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:16px 24px;
+      border-bottom:1px solid #7a1717;
+      background:var(--brand);
+      color:#fff;
+    }
+    .brand { font-weight:700; }
+    .ghost {
+      margin-left:auto;
+      border:1px solid #fff;
+      background:transparent;
+      border-radius:8px;
+      padding:10px 14px;
+      font-weight:600;
+      color:#fff;
+    }
+
+    main { padding:32px 16px 40px; display:flex; justify-content:center; }
+    .card { width:min(100%, 720px); background:#fff; border:1px solid #e6e1db; border-radius:12px; padding:22px 24px 24px; }
+
+    .card-header { margin-bottom:16px; }
+    .card-header h1 { margin:0; font-size:20px; }
+    .hint { font-size:13px; color:#666; margin-top:4px; }
+
+    .option { display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px solid #f0ece6; }
+    .option:last-child { border-bottom:none; }
+    .desc { max-width:70%; }
+    .desc strong { display:block; margin-bottom:2px; }
+    .desc span { font-size:13px; color:#666; }
+
+    .toggle-wrap { min-width:70px; text-align:right; font-size:14px; }
+    input[type="checkbox"] { width:18px; height:18px; }
+
+    .note { margin-top:16px; font-size:13px; color:#666; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Masala</div>
+    <button class="ghost">Mi cuenta</button>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="card-header">
+        <h1>Notificaciones</h1>
+        <p class="hint">Activa o desactiva qué información quieres recibir en tu correo.</p>
+      </div>
+
+      <div class="option">
+        <div class="desc">
+          <strong>Promociones y ofertas</strong>
+          <span>Recibe cupones y descuentos especiales.</span>
+        </div>
+        <div class="toggle-wrap">
+          <label>
+            <input type="checkbox" checked />
+            Activado
+          </label>
+        </div>
+      </div>
+
+      <div class="option">
+        <div class="desc">
+          <strong>Estado de pedidos</strong>
+          <span>Actualizaciones cuando tu pedido cambie de etapa.</span>
+        </div>
+        <div class="toggle-wrap">
+          <label>
+            <input type="checkbox" checked />
+            Activado
+          </label>
+        </div>
+      </div>
+
+      <p class="note">
+        Si desactivas las promociones, no recibirás correos con ofertas, pero seguirás viendo la información dentro del sitio.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
