@@ -2,110 +2,88 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Masala – Historias</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Masala – Delivery indio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-    }
-    header {
-      background: #8b1b1b;
-      color: #fff;
-      padding: 12px 16px;
-      font-weight: bold;
-    }
-    .layout {
-      display: flex;
-      height: calc(100vh - 48px);
-    }
-    nav {
-      width: 250px;
-      background: #fff;
-      border-right: 1px solid #ddd;
-      overflow-y: auto;
-    }
-    nav h2 {
-      font-size: 14px;
-      margin: 12px 16px 4px;
-      color: #555;
-      text-transform: uppercase;
-    }
-    nav button {
-      display: block;
-      width: 100%;
-      text-align: left;
-      background: none;
-      border: none;
-      padding: 10px 16px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    nav button:hover {
-      background: #f0f0f0;
-    }
-    nav button.active {
-      background: #ffe3d8;
-      border-left: 4px solid #8b1b1b;
-      padding-left: 12px;
-    }
-    .viewer {
-      flex: 1;
-      background: #eee;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background: #fff;
-    }
-    .empty {
-      padding: 24px;
-      color: #666;
-    }
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f6f3ee;color:#222;}
+    header{background:#8b1b1b;color:#fff;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;}
+    header nav a{color:#fff;margin-left:14px;text-decoration:none;font-size:14px;}
+    .hero{padding:30px 24px;background:#fff;}
+    .hero h1{margin:0 0 10px;}
+    .platos{display:flex;gap:16px;padding:0 24px 24px;flex-wrap:wrap;}
+    .card{background:#fff;border:1px solid #e5e5e5;border-radius:10px;width:220px;padding:14px;}
+    .card h3{margin-top:0;}
+    .btn{display:inline-block;background:#8b1b1b;color:#fff;padding:6px 10px;border-radius:6px;text-decoration:none;font-size:14px;}
+    .seccion-profesor{background:#fff;padding:16px 24px;margin-top:10px;border-top:2px solid #ddd;}
+    .seccion-profesor h2{margin-top:0;font-size:16px;}
+    .links-historias a{display:inline-block;margin:3px 6px 3px 0;font-size:13px;}
+    footer{padding:12px 24px;font-size:12px;color:#777;}
   </style>
 </head>
 <body>
-  <header>Masala · Historias UI</header>
-  <div class="layout">
+  <header>
+    <div><strong>Masala</strong> · curry & naan</div>
     <nav>
-      <h2>Pantallas</h2>
-      <!-- Pon aquí exactamente los nombres de tus archivos -->
-      <button data-page="historia1.html" class="active">Historia 1 – Login / Registro</button>
-      <button data-page="historia2.html">Historia 2</button>
-      <button data-page="historia3.html">Historia 3 – Catálogo</button>
-      <button data-page="historia4.html">Historia 4</button>
-      <button data-page="historia5.html">Historia 5</button>
-      <button data-page="historia6.html">Historia 6</button>
-      <button data-page="historia7.html">Historia 7</button>
-      <button data-page="historia8.html">Historia 8</button>
-      <button data-page="historia9.html">Historia 9</button>
-      <button data-page="historia10.html">Historia 10</button>
-      <button data-page="historia11.html">Historia 11</button>
-      <button data-page="historia12.html">Historia 12</button>
+      <a href="#menu">Menú</a>
+      <a href="historia1.html">Iniciar sesión</a>
+      <a href="historia2.html">Registrarse</a>
+      <a href="historia3.html">Ver catálogo</a>
     </nav>
-    <div class="viewer">
-      <!-- aquí se cargan las vistas -->
-      <iframe id="vista" src="historia1.html"></iframe>
+  </header>
+
+  <section class="hero" id="menu">
+    <h1>Bienvenido a Masala</h1>
+    <p>Elige tu plato favorito y sigue el flujo de las historias (login → catálogo → carrito → pago).</p>
+  </section>
+
+  <section class="platos">
+    <div class="card">
+      <h3>Curry de pollo</h3>
+      <p>$7.500</p>
+      <a class="btn" href="historia3.html">Ver en catálogo</a>
     </div>
-  </div>
+    <div class="card">
+      <h3>Naan de ajo</h3>
+      <p>$2.100</p>
+      <a class="btn" href="historia3.html">Ver en catálogo</a>
+    </div>
+    <div class="card">
+      <h3>Lassi de mango</h3>
+      <p>$3.200</p>
+      <a class="btn" href="historia3.html">Ver en catálogo</a>
+    </div>
+  </section>
 
-  <script>
-    const buttons = document.querySelectorAll('nav button');
-    const iframe = document.getElementById('vista');
+  
+  <section class="seccion-profesor">
+    <h2>Pruebas de flujo (para la entrega)</h2>
+    <p>Elige qué resultado mostrar en pago:</p>
+    <div class="links-historias">
+     
+      <a class="btn" href="historia10.html">Pago aprobado</a>
+      <a class="btn" href="historia11.html" style="background:#555;">Pago rechazado</a>
+    </div>
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // quitar activo
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        // cambiar iframe
-        const page = btn.getAttribute('data-page');
-        iframe.src = page;
-      });
-    });
-  </script>
+    <h3>Otras historias</h3>
+    <div class="links-historias">
+      <a href="historia1.html">1 · Login / registro</a>
+      <a href="historia2.html">2 · Recuperar / crear cuenta</a>
+      <a href="historia3.html">3 · Catálogo</a>
+      <a href="historia4.html">4</a>
+      <a href="historia5.html">5</a>
+      <a href="historia6.html">6</a>
+      <a href="historia7.html">7</a>
+      <a href="historia8.html">8</a>
+      <a href="historia9.html">9</a>
+      <a href="historia10.html">10</a>
+      <a href="historia11.html">11</a>
+      <a href="historia12.html">12</a>
+    </div>
+  </section>
+
+  <footer>
+    Masala · demo académica · GitHub Pages
+  </footer>
 </body>
 </html>
