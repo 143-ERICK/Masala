@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Masala • Estado del pedido</title>
+  <style>
+    :root { --brand:#8b1e1e; --ink:#222; --bg:#faf7f2; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Arial,sans-serif; background:var(--bg); color:var(--ink); min-height:100vh; }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:16px 24px;
+      border-bottom:1px solid #7a1717;
+      background:var(--brand);
+      color:#fff;
+    }
+    .brand { font-weight:700; }
+    .ghost {
+      margin-left:auto;
+      border:1px solid #fff;
+      background:transparent;
+      border-radius:8px;
+      padding:10px 14px;
+      font-weight:600;
+      color:#fff;
+    }
+
+    main { padding:32px 16px 40px; display:flex; justify-content:center; }
+    .card { width:min(100%, 700px); background:#fff; border:1px solid #e6e1db; border-radius:12px; padding:22px 24px 26px; }
+
+    .card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
+    .card-header h1 { font-size:20px; margin:0; }
+    .order-meta { font-size:14px; color:#555; }
+
+    .timeline { display:flex; justify-content:space-between; margin:14px 0 8px; position:relative; padding:0 2px; }
+    .timeline::before { content:""; position:absolute; left:12px; right:12px; top:50%; height:2px; background:#eee; z-index:0; }
+    .step { position:relative; z-index:1; text-align:center; flex:1; }
+    .circle { width:24px; height:24px; border-radius:50%; margin:0 auto 6px; border:3px solid transparent; }
+    .step span { font-size:13px; display:block; }
+
+    .s-recibido .circle { background:#e6f4ea; border-color:#188038; }
+    .s-prep .circle     { background:#fef7e0; border-color:#f9ab00; }
+    .s-listo .circle    { background:#e3f2fd; border-color:#1a73e8; }
+    .s-entregado .circle{ background:#f3e8fd; border-color:#9334e6; }
+
+    .current { font-weight:700; }
+
+    .legend { margin-top:18px; font-size:14px; color:#555; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Masala</div>
+    <button class="ghost">Mi pedido</button>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="card-header">
+        <h1>Estado del pedido</h1>
+        <div class="order-meta">
+          Pedido #789<br />
+          Cliente@masala.com
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="step s-recibido current">
+          <div class="circle"></div>
+          <span>Recibido</span>
+        </div>
+        <div class="step s-prep">
+          <div class="circle"></div>
+          <span>Preparándose</span>
+        </div>
+        <div class="step s-listo">
+          <div class="circle"></div>
+          <span>Listo para entrega</span>
+        </div>
+        <div class="step s-entregado">
+          <div class="circle"></div>
+          <span>Entregado</span>
+        </div>
+      </div>
+
+      <p class="legend">
+        El estado cambia automáticamente según avanza tu pedido: recibido, preparación en cocina,
+        listo para entrega y entregado.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
