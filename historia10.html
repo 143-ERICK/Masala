@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Masala • Confirmación de entrega</title>
+  <style>
+    :root { --brand:#8b1e1e; --ink:#222; --bg:#faf7f2; --ok:#126e1b; --warn:#b00020; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Arial,sans-serif; background:var(--bg); color:var(--ink); min-height:100vh; }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:16px 24px;
+      border-bottom:1px solid #7a1717;
+      background:var(--brand);
+      color:#fff;
+    }
+    .brand { font-weight:700; }
+    .ghost {
+      margin-left:auto;
+      border:1px solid #fff;
+      background:transparent;
+      border-radius:8px;
+      padding:10px 14px;
+      font-weight:600;
+      color:#fff;
+    }
+
+    main { padding:32px 16px 40px; display:flex; justify-content:center; }
+    .card { width:min(100%, 720px); background:#fff; border:1px solid #e6e1db; border-radius:12px; padding:22px 24px 24px; }
+
+    .card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+    .card-header h1 { font-size:20px; margin:0; }
+    .badge { padding:6px 10px; border-radius:999px; font-size:13px; font-weight:600; }
+    .badge-ok { background:#e6f4ea; color:var(--ok); }
+    .badge-rev { background:#fff3e0; color:#8a5300; }
+
+    .info { font-size:14px; color:#555; margin-bottom:16px; }
+
+    .block { border-top:1px solid #eee; padding-top:14px; margin-top:10px; font-size:14px; }
+    .row { display:flex; justify-content:space-between; padding:4px 0; }
+
+    .actions { margin-top:18px; display:flex; flex-wrap:wrap; gap:12px; }
+    .btn { border-radius:8px; padding:10px 16px; border:1px solid transparent; font-weight:600; font-size:14px; }
+    .btn-main { background:var(--brand); color:#fff; }
+    .btn-ghost { background:#fff; color:var(--brand); border-color:#e0cbcb; }
+
+    .alert { margin-top:18px; padding:10px 12px; border-radius:8px; font-size:13px; }
+    .alert-ok { background:#eef9f0; color:var(--ok); border:1px solid #cfe8d3; }
+    .alert-warn { background:#fdecee; color:var(--warn); border:1px solid #f6cfd5; margin-top:10px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Masala</div>
+    <button class="ghost">Confirmar pedido</button>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="card-header">
+        <h1>Confirmación de entrega</h1>
+        <span class="badge badge-ok">Entregado</span>
+      </div>
+
+      <p class="info">
+        Pedido #789 • Entregado el 12/05/2025 a las 20:45<br />
+        Tu pedido fue entregado exitosamente.
+      </p>
+
+      <div class="block">
+        <div class="row"><span>Estado actual</span><span>Entregado</span></div>
+        <div class="row"><span>Dirección</span><span>Av. Ejemplo 1234</span></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-main" type="button">Todo correcto</button>
+        <button class="btn btn-ghost" type="button">Reportar problema</button>
+      </div>
+
+      <div class="alert alert-ok">
+        Si todo está correcto, no debes hacer nada más. Gracias por elegir Masala.
+      </div>
+
+      <div class="alert alert-warn">
+        Si no recibiste el pedido, presiona “Reportar problema”. Se generará una alerta para el administrador
+        indicando que el pedido 789 no fue recibido.
+      </div>
+    </section>
+  </main>
+</body>
+</html>
