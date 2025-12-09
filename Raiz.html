@@ -2,88 +2,171 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Masala – Delivery indio</title>
+  <title>Masala · Curry & Naan</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+
   <style>
     *{box-sizing:border-box;}
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f6f3ee;color:#222;}
-    header{background:#8b1b1b;color:#fff;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;}
-    header nav a{color:#fff;margin-left:14px;text-decoration:none;font-size:14px;}
-    .hero{padding:30px 24px;background:#fff;}
-    .hero h1{margin:0 0 10px;}
-    .platos{display:flex;gap:16px;padding:0 24px 24px;flex-wrap:wrap;}
-    .card{background:#fff;border:1px solid #e5e5e5;border-radius:10px;width:220px;padding:14px;}
-    .card h3{margin-top:0;}
-    .btn{display:inline-block;background:#8b1b1b;color:#fff;padding:6px 10px;border-radius:6px;text-decoration:none;font-size:14px;}
-    .seccion-profesor{background:#fff;padding:16px 24px;margin-top:10px;border-top:2px solid #ddd;}
-    .seccion-profesor h2{margin-top:0;font-size:16px;}
-    .links-historias a{display:inline-block;margin:3px 6px 3px 0;font-size:13px;}
-    footer{padding:12px 24px;font-size:12px;color:#777;}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:#f6f3ee;
+      color:#222;
+    }
+
+    /* HEADER */
+    header{
+      background:#8b1b1b;
+      color:#fff;
+      padding:14px 24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    header nav a{
+      color:#fff;
+      margin-left:16px;
+      text-decoration:none;
+      font-size:14px;
+      font-weight:bold;
+    }
+
+    /* HERO */
+    .hero{
+      padding:40px 24px;
+      background:#fff;
+      text-align:center;
+    }
+
+    .hero h1{
+      margin:0 0 10px;
+    }
+
+    .hero p{
+      font-size:15px;
+      color:#444;
+    }
+
+    /* PLATOS */
+    .platos{
+      display:flex;
+      gap:20px;
+      padding:24px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .card{
+      background:#fff;
+      border:1px solid #e5e5e5;
+      border-radius:12px;
+      width:240px;
+      padding:16px;
+      text-align:center;
+      box-shadow:0 2px 6px rgba(0,0,0,.05);
+    }
+
+    .card h3{
+      margin-top:0;
+    }
+
+    .card p{
+      margin:6px 0;
+      font-weight:bold;
+    }
+
+    .btn{
+      display:inline-block;
+      background:#8b1b1b;
+      color:#fff;
+      padding:8px 14px;
+      border-radius:8px;
+      text-decoration:none;
+      font-size:14px;
+      margin-top:8px;
+    }
+
+    /* FOOTER */
+    footer{
+      padding:16px;
+      font-size:12px;
+      color:#777;
+      text-align:center;
+      background:#fff;
+      margin-top:30px;
+    }
   </style>
 </head>
+
 <body>
+
+  <!-- HEADER -->
   <header>
     <div><strong>Masala</strong> · curry & naan</div>
     <nav>
-      <a href="#menu">Menú</a>
-      <a href="historia1.html">Iniciar sesión</a>
-      <a href="historia2.html">Registrarse</a>
-      <a href="historia3.html">Ver catálogo</a>
+      <a href="historia2.html">Iniciar sesión</a>
+      <a href="historia3.html">Catálogo</a>
     </nav>
   </header>
 
-  <section class="hero" id="menu">
+  <section class="hero">
     <h1>Bienvenido a Masala</h1>
-    <p>Elige tu plato favorito y sigue el flujo de las historias (login → catálogo → carrito → pago).</p>
+    <p>Auténtica comida india directo a tu hogar. Sabores intensos, especias reales y tradición.</p>
   </section>
 
   <section class="platos">
-    <div class="card">
-      <h3>Curry de pollo</h3>
-      <p>$7.500</p>
-      <a class="btn" href="historia3.html">Ver en catálogo</a>
-    </div>
-    <div class="card">
-      <h3>Naan de ajo</h3>
-      <p>$2.100</p>
-      <a class="btn" href="historia3.html">Ver en catálogo</a>
-    </div>
-    <div class="card">
-      <h3>Lassi de mango</h3>
-      <p>$3.200</p>
-      <a class="btn" href="historia3.html">Ver en catálogo</a>
-    </div>
-  </section>
 
-  
-  <section class="seccion-profesor">
-    <h2>Pruebas de flujo (para la entrega)</h2>
-    <p>Elige qué resultado mostrar en pago:</p>
-    <div class="links-historias">
-     
-      <a class="btn" href="historia10.html">Pago aprobado</a>
-      <a class="btn" href="historia11.html" style="background:#555;">Pago rechazado</a>
-    </div>
+  <div class="card">
+    <img src="img/curry.jpg" style="width:100%; border-radius:10px;">
+    <h3>Curry de pollo</h3>
+    <p>$7.500</p>
+    <a class="btn" href="historia3.html">Ver en catálogo</a>
+  </div>
 
-    <h3>Otras historias</h3>
-    <div class="links-historias">
-      <a href="historia1.html">1 · Login / registro</a>
-      <a href="historia2.html">2 · Recuperar / crear cuenta</a>
-      <a href="historia3.html">3 · Catálogo</a>
-      <a href="historia4.html">4</a>
-      <a href="historia5.html">5</a>
-      <a href="historia6.html">6</a>
-      <a href="historia7.html">7</a>
-      <a href="historia8.html">8</a>
-      <a href="historia9.html">9</a>
-      <a href="historia10.html">10</a>
-      <a href="historia11.html">11</a>
-      <a href="historia12.html">12</a>
-    </div>
-  </section>
+  <div class="card">
+    <img src="img/naan.jpg" style="width:100%; border-radius:10px;">
+    <h3>Naan de ajo</h3>
+    <p>$2.100</p>
+    <a class="btn" href="historia3.html">Ver en catálogo</a>
+  </div>
 
+  <div class="card">
+    <img src="img/lassi.jpg" style="width:100%; border-radius:10px;">
+    <h3>Lassi de mango</h3>
+    <p>$3.200</p>
+    <a class="btn" href="historia3.html">Ver en catálogo</a>
+  </div>
+
+  <div class="card">
+    <img src="img/samosa.jpg" style="width:100%; border-radius:10px;">
+    <h3>Samosas</h3>
+    <p>$2.800</p>
+    <a class="btn" href="historia3.html">Ver en catálogo</a>
+  </div>
+
+  <div class="card">
+    <img src="img/vadapav.jpg" style="width:100%; border-radius:10px;">
+    <h3>Vada Pav</h3>
+    <p>$3.000</p>
+    <a class="btn" href="historia3.html">Ver en catálogo</a>
+  </div>
+
+  <div class="card">
+    <img src="img/bhaji.jpg" style="width:100%; border-radius:10px;">
+    <h3>Pakora Bhaji</h3>
+    <p>$3.500</p>
+    <a class="btn" href="historia3.html">Ver en catálogo</a>
+  </div>
+
+</section>
+
+
+  <!-- FOOTER -->
   <footer>
-    Masala · demo académica · GitHub Pages
+    Masala · Restaurante de comida india · Proyecto académico
   </footer>
+
 </body>
 </html>
+

@@ -2,46 +2,179 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+  <title>Masala · Crear cuenta</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Masala • Registro</title>
+
   <style>
-    .row { display: flex; flex-wrap: wrap; margin: 0; }
-    .col-12 { flex: 0 0 100%; max-width: 100%; padding: 0; }
-    body { font-family: Arial, sans-serif; margin: 0; background: #faf7f2; color: #222; min-height: 100vh; }
-    .wrap { width: 100%; padding: 24px; }
-    .card { width: 100%; background: #fff; border: 1px solid #e6e1db; border-radius: 0; }
-    .card-hd { padding: 20px 24px; border-bottom: 1px solid #eee; font-weight: bold; font-size: 20px; }
-    .card-bd { padding: 24px; }
-    label { display: block; font-size: 14px; color: #666; margin-bottom: 6px; }
-    input[type="email"], input[type="password"] { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 14px; font-size: 16px; }
-    .btn { display: inline-block; padding: 12px 18px; border: 0; border-radius: 8px; background: #8b1e1e; color: #fff; font-weight: 600; font-size: 16px; }
-    .links { margin-top: 12px; font-size: 14px; }
-    .links a { color: #8b1e1e; text-decoration: none; margin-right: 16px; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #8b1b1b, #c0392b);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .register-container {
+      background: #fff;
+      width: 100%;
+      max-width: 400px;
+      padding: 30px 26px;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #8b1b1b;
+      margin-bottom: 6px;
+    }
+
+    .sublogo {
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 6px;
+      color: #555;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 14px;
+      font-size: 15px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: #8b1b1b;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+
+    .btn:hover {
+      background: #a52727;
+    }
+
+    .links {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .links a {
+      color: #8b1b1b;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    #mensaje {
+      margin-top: 14px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .error {
+      color: #c0392b;
+    }
+
+    .ok {
+      color: #2e7d32;
+    }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-hd">Registro</div>
-          <div class="card-bd">
-            <form>
-              <label for="email">EMAIL</label>
-              <input id="email" type="email" placeholder="cliente@masala.com" />
-              <label for="pass">Contraseña</label>
-              <input id="pass" type="password" placeholder="••••••••" />
-              <button type="button" class="btn">Crear cuenta</button>
-              <div class="links">
-                <a href="#">Iniciar sesión</a>
-                <a href="#">¿No tienes cuenta?</a>
-                <a href="#">¿Olvidaste tu contraseña?</a>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+
+  <div class="register-container">
+
+    <div class="logo">Masala</div>
+    <div class="sublogo">Curry & Naan · Crear cuenta</div>
+
+    <h2>Registro</h2>
+
+    <form onsubmit="return false;">
+      <label>Email</label>
+      <input type="email" id="email" placeholder="cliente@masala.com" required>
+
+      <label>Contraseña</label>
+      <input type="password" id="pass" placeholder="••••••••" required>
+
+      <button class="btn" onclick="registrar()">Crear cuenta</button>
+    </form>
+
+    <p id="mensaje"></p>
+
+    <div class="links">
+      ¿Ya tienes cuenta?
+      <a href="historia2.html">Iniciar sesión</a>
     </div>
+
   </div>
+
+  <!-- ✅ REGISTRO REAL -->
+  <script>
+    function registrar() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("pass").value;
+      const mensaje = document.getElementById("mensaje");
+
+      mensaje.innerText = "Registrando...";
+      mensaje.className = "";
+
+      fetch("http://localhost:8080/MasalaBackend-Erick/api/registro", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: `email=${email}&password=${password}`
+      })
+      .then(response => response.text())
+      .then(data => {
+        if (data.toLowerCase().includes("correcto")) {
+          mensaje.innerText = "✅ Cuenta creada correctamente";
+          mensaje.className = "ok";
+
+          setTimeout(() => {
+            window.location.href = "historia2.html";
+          }, 1200);
+
+        } else {
+          mensaje.innerText = "❌ " + data;
+          mensaje.className = "error";
+        }
+      })
+      .catch(error => {
+        mensaje.innerText = "❌ Error de conexión con el servidor";
+        mensaje.className = "error";
+        console.error(error);
+      });
+    }
+  </script>
+
 </body>
 </html>

@@ -1,95 +1,80 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Masala • Historial de pedidos</title>
-  <style>
-    :root { --brand:#8b1e1e; --ink:#222; --bg:#faf7f2; }
-    * { box-sizing:border-box; }
-    body { margin:0; font-family:Arial,sans-serif; background:var(--bg); color:var(--ink); min-height:100vh; }
+  <meta charset="UTF-8">
+  <title>Masala • Pago Rechazado</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .topbar {
+  <style>
+    body {
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:#f6f3ee;
       display:flex;
       align-items:center;
-      gap:12px;
-      padding:16px 24px;
-      border-bottom:1px solid #7a1717;
-      background:var(--brand);
-      color:#fff;
-    }
-    .brand { font-weight:700; }
-    .ghost {
-      margin-left:auto;
-      border:1px solid #fff;
-      background:transparent;
-      border-radius:8px;
-      padding:10px 14px;
-      font-weight:600;
-      color:#fff;
+      justify-content:center;
+      height:100vh;
     }
 
-    main { padding:32px 16px 40px; display:flex; justify-content:center; }
-    .card { width:min(100%, 840px); background:#fff; border:1px solid #e6e1db; border-radius:12px; padding:22px 24px 24px; }
+    .card {
+      background:white;
+      border-radius:16px;
+      padding:40px 30px;
+      max-width:420px;
+      width:100%;
+      text-align:center;
+      box-shadow:0 6px 18px rgba(0,0,0,.2);
+    }
 
-    .card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
-    .card-header h1 { margin:0; font-size:20px; }
-    .hint { font-size:13px; color:#666; }
+    .error {
+      font-size:60px;
+      color:#c0392b;
+    }
 
-    table { width:100%; border-collapse:collapse; margin-top:10px; font-size:14px; }
-    th, td { padding:8px 6px; text-align:left; border-bottom:1px solid #eee; }
-    th { font-weight:600; color:#444; }
-    td:last-child { text-align:right; }
-    .btn-link { color:var(--brand); text-decoration:none; font-weight:600; }
+    h1 {
+      margin:10px 0;
+      color:#c0392b;
+    }
 
-    .note { margin-top:14px; font-size:13px; color:#666; }
+    p {
+      color:#444;
+      font-size:15px;
+      margin-bottom:20px;
+    }
+
+    .btn {
+      background:#8b1b1b;
+      color:white;
+      border:none;
+      padding:12px 20px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:15px;
+      margin-top:8px;
+    }
   </style>
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="brand">Masala</div>
-    <button class="ghost">Mi cuenta</button>
-  </header>
 
-  <main>
-    <section class="card">
-      <div class="card-header">
-        <h1>Historial de pedidos</h1>
-        <span class="hint">Se muestran los últimos 6 meses</span>
-      </div>
+<div class="card">
+  <div class="error">❌</div>
+  <h1>Pago rechazado</h1>
+  <p>Ocurrió un problema con el pago.<br>Intenta nuevamente.</p>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Pedido</th>
-            <th>Fecha</th>
-            <th>Total</th>
-            <th>Estado</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>#111</td>
-            <td>10/05/2025</td>
-            <td>$14.000</td>
-            <td>Entregado</td>
-            <td><a href="#" class="btn-link">Repetir</a></td>
-          </tr>
-          <tr>
-            <td>#112</td>
-            <td>20/05/2025</td>
-            <td>$21.500</td>
-            <td>Entregado</td>
-            <td><a href="#" class="btn-link">Repetir</a></td>
-          </tr>
-        </tbody>
-      </table>
+  <button class="btn" onclick="reintentar()">Volver a intentar</button>
+  <button class="btn" onclick="volver()">Volver al inicio</button>
+</div>
 
-      <p class="note">
-        Al repetir un pedido se creará un nuevo carrito con los mismos productos para que puedas revisarlos antes de pagar.
-      </p>
-    </section>
-  </main>
+<script>
+function reintentar() {
+  window.location.href = "historia6.html"; // vuelve al resumen
+}
+
+function volver() {
+  window.location.href = "Raiz.html";
+}
+</script>
+
 </body>
 </html>
