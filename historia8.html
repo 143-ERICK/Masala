@@ -1,138 +1,78 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Masala • Mi perfil</title>
+  <title>Masala • Pago Rechazado</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    body { margin:0; font-family:Arial; background:#f6f3ee; }
-
-    header {
-      background:#8b1b1b;
-      color:white;
-      padding:14px 24px;
+    body {
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:#f6f3ee;
       display:flex;
-      justify-content:space-between;
       align-items:center;
+      justify-content:center;
+      height:100vh;
     }
 
-    header a {
-      color:white;
-      text-decoration:none;
-      margin-left:16px;
-      font-weight:bold;
+    .card {
+      background:white;
+      border-radius:16px;
+      padding:40px 30px;
+      max-width:420px;
+      width:100%;
+      text-align:center;
+      box-shadow:0 6px 18px rgba(0,0,0,.2);
+    }
+
+    .error {
+      font-size:60px;
+      color:#c0392b;
     }
 
     h1 {
-      text-align:center;
-      margin:25px 0;
+      margin:10px 0;
+      color:#c0392b;
     }
 
-    .contenedor {
-      max-width:700px;
-      margin:auto;
-      background:white;
-      border-radius:14px;
-      padding:25px;
-      box-shadow:0 4px 12px rgba(0,0,0,.12);
-    }
-
-    .dato {
-      margin-bottom:14px;
-      font-size:16px;
-    }
-
-    .dato strong {
-      color:#8b1b1b;
-    }
-
-    .acciones {
-      margin-top:30px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
+    p {
+      color:#444;
+      font-size:15px;
+      margin-bottom:20px;
     }
 
     .btn {
-      text-align:center;
       background:#8b1b1b;
       color:white;
       border:none;
-      padding:12px 18px;
+      padding:12px 20px;
       border-radius:10px;
       cursor:pointer;
-      font-size:14px;
-      text-decoration:none;
-    }
-
-    .btn-cerrar {
-      margin-top:25px;
-      width:100%;
-      background:#c0392b;
-    }
-
-    footer {
-      text-align:center;
-      padding:16px;
-      color:#777;
-      margin-top:30px;
+      font-size:15px;
+      margin-top:8px;
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <div>Masala • curry & naan</div>
-  <nav>
-    <a href="Raiz.html">Inicio</a>
-    <a href="historia3.html">Catálogo</a>
-  </nav>
-</header>
+<div class="card">
+  <div class="error">❌</div>
+  <h1>Pago rechazado</h1>
+  <p>Ocurrió un problema con el pago.<br>Intenta nuevamente.</p>
 
-<h1>Mi perfil</h1>
-
-<div class="contenedor">
-
-  <div class="dato">
-    <strong>Correo:</strong> <span id="correo"></span>
-  </div>
-
-  <div class="dato">
-    <strong>Estado de sesión:</strong> Activa
-  </div>
-
-  <div class="acciones">
-    <a class="btn" href="historia7.html">📦 Historial</a>
-    <a class="btn" href="historia9.html">🚴 Estado del pedido</a>
-    <a class="btn" href="historia12.html">🔔 Notificaciones</a>
-    <a class="btn" href="historia5.html">🛒 Mi carrito</a>
-  </div>
-
-  <button class="btn btn-cerrar" onclick="cerrarSesion()">Cerrar sesión</button>
-
+  <button class="btn" onclick="reintentar()">Volver a intentar</button>
+  <button class="btn" onclick="volver()">Volver al inicio</button>
 </div>
 
-<footer>
-  Masala · Restaurante de comida india · Proyecto académico
-</footer>
-
 <script>
-// ✅ Mostrar usuario logueado
-let sesion = localStorage.getItem("sesion");
-let correoSpan = document.getElementById("correo");
-
-if (!sesion) {
-  correoSpan.innerText = "No has iniciado sesión";
-} else {
-  correoSpan.innerText = sesion;
+function reintentar() {
+  window.location.href = "historia6.html"; // vuelve al resumen
 }
 
-// ✅ Cerrar sesión
-function cerrarSesion() {
-  localStorage.removeItem("sesion");
-  window.location.href = "historia2.html"; // Login
+function volver() {
+  window.location.href = "Raiz.html";
 }
 </script>
 

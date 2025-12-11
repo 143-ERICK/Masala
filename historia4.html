@@ -1,43 +1,135 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<title>Masala | Carrito</title>
-<style>
-body{margin:0;font-family:Arial;background:#f6f2ed}
-header{background:#8b1e1e;color:#fff;padding:15px;text-align:center}
-table{width:90%;margin:30px auto;background:#fff;border-collapse:collapse}
-td,th{padding:10px;border-bottom:1px solid #ddd;text-align:center}
-button{background:#8b1e1e;color:#fff;border:none;padding:10px 20px;border-radius:6px}
-</style>
+  <meta charset="UTF-8">
+  <title>Masala • Resumen del pedido</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body { margin:0; font-family:Arial; background:#f6f3ee; }
+
+    header {
+      background:#8b1b1b;
+      color:white;
+      padding:14px 24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    header a {
+      color:white;
+      text-decoration:none;
+      margin-left:16px;
+      font-weight:bold;
+    }
+
+    h1 {
+      text-align:center;
+      margin:25px 0;
+    }
+
+    .contenedor {
+      max-width:600px;
+      margin:0 auto;
+      background:white;
+      border-radius:14px;
+      padding:20px;
+      box-shadow:0 4px 12px rgba(0,0,0,.12);
+    }
+
+    .producto {
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:8px;
+    }
+
+    .total {
+      margin-top:16px;
+      font-weight:bold;
+      text-align:right;
+      font-size:18px;
+    }
+
+    .acciones {
+      margin-top:18px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .btn {
+      flex:1;
+      text-align:center;
+      background:#8b1b1b;
+      color:white;
+      padding:10px 14px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:bold;
+    }
+
+    footer {
+      text-align:center;
+      margin-top:30px;
+      padding:16px;
+      color:#777;
+    }
+  </style>
 </head>
+
 <body>
 
-<header><h2>Tu carrito</h2></header>
+<header>
+  <div>Masala • curry & naan</div>
+  <nav>
+    <a href="historia3.html">Volver al catálogo</a>
+    <a href="historia5.html">Carrito</a>
+  </nav>
+</header>
 
-<table id="tabla">
-<tr><th>Producto</th><th>Precio</th></tr>
-</table>
+<h1>Resumen del pedido</h1>
 
-<center>
-<h3 id="total"></h3>
-<button onclick="pagar()">Ir a pagar</button>
-</center>
+<div class="contenedor" id="resumen"></div>
+
+<footer>
+  Masala · Restaurante de comida india · Proyecto académico
+</footer>
 
 <script>
-let c=JSON.parse(localStorage.getItem("carrito"))||[];
-let t=0;
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  let resumen = document.getElementById("resumen");
+  let total = 0;
 
-c.forEach(p=>{
-tabla.innerHTML+=`<tr><td>${p.nombre}</td><td>$${p.precio}</td></tr>`;
-t+=p.precio;
-});
+  if (carrito.length === 0) {
+    resumen.innerHTML = "<p>Tu carrito está vacío.</p>";
+  } else {
+    carrito.forEach(p => {
+      let subtotal = p.precio * p.cantidad;
+      total += subtotal;
 
-total.innerText="Total: $"+t;
+      resumen.innerHTML += `
+        <div class="producto">
+          <div>${p.nombre} x ${p.cantidad}</div>
+          <div>$${subtotal.toLocaleString()}</div>
+        </div>
+      `;
+    });
 
-function pagar(){
-location.href="historia10.html";
-}
+    // Guardamos el total para la pantalla de pago
+    localStorage.setItem("totalCarrito", total);
+
+    resumen.innerHTML += `
+      <div class="total">Total a pagar: $${total.toLocaleString()}</div>
+
+      <div class="acciones">
+        <a class="btn" href="historia5.html">Volver</a>
+        <!-- 👇 Ahora va a pago con tarjeta (historia7) -->
+        <a class="btn" href="historia7.html">Pagar</a>
+      </div>
+    `;
+  }
 </script>
+
 </body>
 </html>

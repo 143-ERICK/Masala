@@ -136,8 +136,12 @@
 
   </div>
 
-  <!-- ✅ LOGIN REAL CON TU BACKEND JAVA -->
   <script>
+    // ✅ SI YA ESTÁ LOGUEADO, LO MANDAMOS DIRECTO AL INICIO
+    if (localStorage.getItem("usuario")) {
+      window.location.href = "Raiz.html";
+    }
+
     function login() {
       const email = document.getElementById("email").value;
       const password = document.getElementById("pass").value;
@@ -156,6 +160,10 @@
       .then(response => response.text())
       .then(data => {
         if (data.toLowerCase().includes("correcto")) {
+
+          // ✅ GUARDAMOS SESIÓN
+          localStorage.setItem("usuario", email);
+
           mensaje.innerText = "✅ Acceso correcto. Redirigiendo...";
           mensaje.className = "ok";
 

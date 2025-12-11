@@ -6,176 +6,204 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    body { margin:0; font-family: Arial, sans-serif; background:#f6f3ee; }
-    
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f6f3ee;
+      color: #222;
+    }
+
+    /* HEADER */
     header {
       background:#8b1b1b;
-      color:white;
+      color:#fff;
       padding:14px 24px;
       display:flex;
       justify-content:space-between;
       align-items:center;
     }
 
-    header a {
-      color:white;
+    header nav {
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+
+    header nav a {
+      color:#fff;
       text-decoration:none;
-      margin-left:18px;
+      font-size:14px;
       font-weight:bold;
     }
 
-    h1 {
-      text-align:center;
-      margin:30px 0 10px;
+    #userArea a {
+      font-weight:bold;
+      text-decoration:none;
     }
 
-    .catalogo {
+    /* TÍTULO */
+    .titulo {
+      text-align:center;
+      margin:24px 0 10px;
+      font-size:28px;
+      font-weight:bold;
+    }
+
+    /* GRID PRODUCTOS */
+    .grid {
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap:20px;
-      padding:30px;
-      max-width:1200px;
-      margin:auto;
+      gap:24px;
+      padding:0 24px 32px;
+      max-width:1150px;
+      margin:0 auto 40px;
     }
 
     .card {
-      background:white;
+      background:#fff;
       border-radius:14px;
+      box-shadow:0 2px 6px rgba(0,0,0,.08);
       padding:14px;
-      box-shadow:0 4px 12px rgba(0,0,0,.12);
       text-align:center;
     }
 
     .card img {
       width:100%;
-      height:150px;
-      object-fit:cover;
       border-radius:10px;
-    }
-
-    .card h3 { margin:10px 0 5px; }
-
-    .precio {
-      font-weight:bold;
+      max-height:210px;
+      object-fit:cover;
       margin-bottom:10px;
     }
 
+    .card h3 {
+      margin:4px 0;
+      font-size:17px;
+    }
+
+    .card p {
+      margin:2px 0 10px;
+      font-weight:bold;
+      color:#444;
+    }
+
     .btn {
+      display:inline-block;
       background:#8b1b1b;
-      color:white;
+      color:#fff;
       border:none;
       padding:8px 14px;
       border-radius:8px;
       cursor:pointer;
       font-size:14px;
+      font-weight:bold;
+      text-decoration:none;
     }
 
-    footer {
-      text-align:center;
+    .btn:hover {
+      background:#a52727;
+    }
+
+    /* FOOTER */
+    footer{
       padding:16px;
+      font-size:12px;
       color:#777;
+      text-align:center;
+      background:#fff;
+      margin-top:10px;
     }
   </style>
 </head>
-
 <body>
 
-<header>
-  <div>Masala • curry & naan</div>
-  <nav>
-    <a href="Raiz.html">Inicio</a>
-    <a href="historia5.html">Carrito</a>
-  </nav>
-</header>
+  <!-- HEADER -->
+  <header>
+    <div><strong>Masala</strong> • curry & naan</div>
+    <nav>
+      <a href="Raiz.html">Inicio</a>
+      <!-- aquí se rellena Perfil / Iniciar sesión -->
+      <span id="userArea"></span>
+      <a href="historia5.html">Carrito</a>
+    </nav>
+  </header>
 
-<h1>Catálogo de productos</h1>
+  <h1 class="titulo">Productos</h1>
 
-<div class="catalogo">
+  <!-- GRID DE PRODUCTOS -->
+  <section class="grid" id="gridProductos">
+    <!-- Se rellena con JS -->
+  </section>
 
-  <!-- Curry -->
-  <div class="card">
-    <img src="img/curry.jpg">
-    <h3>Curry de pollo</h3>
-    <div class="precio">$7.500</div>
-    <button class="btn" onclick="agregar('Curry de pollo', 7500)">Agregar</button>
-  </div>
+  <footer>
+    Masala · Restaurante de comida india · Proyecto académico
+  </footer>
 
-  <!-- Naan -->
-  <div class="card">
-    <img src="img/naan.jpg">
-    <h3>Naan de ajo</h3>
-    <div class="precio">$2.100</div>
-    <button class="btn" onclick="agregar('Naan de ajo', 2100)">Agregar</button>
-  </div>
+  <script>
+    /* ---------------- NAV / PERFIL ----------------- */
+    const userArea = document.getElementById("userArea");
+    const usuario = localStorage.getItem("usuario");
 
-  <!-- Lassi -->
-  <div class="card">
-    <img src="img/lassi.jpg">
-    <h3>Lassi de mango</h3>
-    <div class="precio">$3.200</div>
-    <button class="btn" onclick="agregar('Lassi de mango', 3200)">Agregar</button>
-  </div>
+    if (usuario) {
+      // Si hay sesión, mostramos PERFIL
+      userArea.innerHTML = `<a href="historia10.html">Perfil</a>`;
+    } else {
+      // Si no hay sesión, mostramos INICIAR SESIÓN
+      userArea.innerHTML = `<a href="historia2.html">Iniciar sesión</a>`;
+    }
 
-  <!-- Samosas -->
-  <div class="card">
-    <img src="img/samosa.jpg">
-    <h3>Samosas</h3>
-    <div class="precio">$2.800</div>
-    <button class="btn" onclick="agregar('Samosas', 2800)">Agregar</button>
-  </div>
+    /* ---------------- PRODUCTOS ----------------- */
+    const productos = [
+      { id: 1, nombre: "Curry de pollo",   precio: 7500, imagen: "img/curry.jpg" },
+      { id: 2, nombre: "Naan de ajo",      precio: 2100, imagen: "img/naan.jpg" },
+      { id: 3, nombre: "Lassi de mango",   precio: 3200, imagen: "img/lassi.jpg" },
+      { id: 4, nombre: "Samosas",          precio: 2800, imagen: "img/samosa.jpg" },
+      { id: 5, nombre: "Vada Pav",         precio: 3000, imagen: "img/vadapav.jpg" },
+      { id: 6, nombre: "Pakora Bhaji",     precio: 3500, imagen: "img/bhaji.jpg" },
+      { id: 7, nombre: "Gulab Jamun",      precio: 2500, imagen: "img/GulabJamun.jpg" },
+      { id: 8, nombre: "Coca Cola",        precio: 1500, imagen: "img/cocacola.jpg" },
+      { id: 9, nombre: "Biryani",          precio: 4500, imagen: "img/Biryani.jpg" },
+      { id:10, nombre: "Chana masala",     precio: 7500, imagen: "img/Chana masala.jpg" }
+    ];
 
-  <!-- Vada Pav -->
-  <div class="card">
-    <img src="img/vadapav.jpg">
-    <h3>Vada Pav</h3>
-    <div class="precio">$3.000</div>
-    <button class="btn" onclick="agregar('Vada Pav', 3000)">Agregar</button>
-  </div>
+    const grid = document.getElementById("gridProductos");
 
-  <!-- Pakora Bhaji -->
-  <div class="card">
-    <img src="img/bhaji.jpg">
-    <h3>Pakora Bhaji</h3>
-    <div class="precio">$3.500</div>
-    <button class="btn" onclick="agregar('Pakora Bhaji', 3500)">Agregar</button>
-  </div>
+    function renderProductos() {
+      grid.innerHTML = "";
+      productos.forEach((p, index) => {
+        const card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${p.imagen}" alt="${p.nombre}">
+          <h3>${p.nombre}</h3>
+          <p>$${p.precio.toLocaleString("es-CL")}</p>
+          <button class="btn" onclick="agregarAlCarrito(${index})">Agregar</button>
+        `;
+        grid.appendChild(card);
+      });
+    }
 
-  <div class="card">
-    <img src="img/GulabJamun.jpg">
-    <h3>Gulab Jamun</h3>
-    <div class="precio">$2.500</div>
-    <button class="btn" onclick="agregar('Gulab Jamun', 2500)">Agregar</button>
-  </div>
+    /* ---------------- CARRITO (localStorage) ----------------- */
+    function agregarAlCarrito(i) {
+      const producto = productos[i];
+      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  <div class="card">
-    <img src="img/cocacola.jpg">
-    <h3>Coca Cola</h3>
-    <div class="precio">$1.500</div>
-    <button class="btn" onclick="agregar('Coca Cola', 1500)">Agregar</button>
-  </div>
+      const idx = carrito.findIndex(p => p.nombre === producto.nombre);
+      if (idx >= 0) {
+        carrito[idx].cantidad += 1;
+      } else {
+        carrito.push({
+          nombre: producto.nombre,
+          precio: producto.precio,
+          cantidad: 1
+        });
+      }
 
-</div>
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      alert(`${producto.nombre} agregado al carrito`);
+    }
 
-<footer>
-  Masala · Restaurante de comida india · Proyecto académico
-</footer>
-
-<script>
-function agregar(nombre, precio) {
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-  let producto = carrito.find(p => p.nombre === nombre);
-
-  if (producto) {
-    producto.cantidad++;
-  } else {
-    carrito.push({ nombre, precio, cantidad: 1 });
-  }
-
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-  alert("Producto agregado al carrito");
-}
-</script>
-
+    renderProductos();
+  </script>
 </body>
 </html>

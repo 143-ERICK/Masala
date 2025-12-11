@@ -1,78 +1,120 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Masala • Pago Rechazado</title>
+  <title>Masala • Historial de pedidos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    body {
-      margin:0;
-      font-family: Arial, sans-serif;
-      background:#f6f3ee;
+    body { margin:0; font-family:Arial; background:#f6f3ee; }
+
+    header {
+      background:#8b1b1b;
+      color:white;
+      padding:14px 24px;
       display:flex;
+      justify-content:space-between;
       align-items:center;
-      justify-content:center;
-      height:100vh;
     }
 
-    .card {
-      background:white;
-      border-radius:16px;
-      padding:40px 30px;
-      max-width:420px;
-      width:100%;
-      text-align:center;
-      box-shadow:0 6px 18px rgba(0,0,0,.2);
-    }
-
-    .error {
-      font-size:60px;
-      color:#c0392b;
+    header a {
+      color:white;
+      text-decoration:none;
+      margin-left:16px;
+      font-weight:bold;
     }
 
     h1 {
-      margin:10px 0;
-      color:#c0392b;
+      text-align:center;
+      margin:30px 0;
     }
 
-    p {
-      color:#444;
-      font-size:15px;
+    .contenedor {
+      max-width:900px;
+      margin:auto;
+      padding:20px;
+    }
+
+    .pedido {
+      background:white;
+      border-radius:14px;
+      padding:16px;
       margin-bottom:20px;
+      box-shadow:0 4px 12px rgba(0,0,0,.1);
     }
 
-    .btn {
-      background:#8b1b1b;
-      color:white;
-      border:none;
-      padding:12px 20px;
-      border-radius:10px;
-      cursor:pointer;
-      font-size:15px;
-      margin-top:8px;
+    .pedido h3 {
+      margin:0 0 10px;
+    }
+
+    .producto {
+      display:flex;
+      justify-content:space-between;
+      border-bottom:1px solid #ddd;
+      padding:6px 0;
+    }
+
+    .total {
+      font-weight:bold;
+      text-align:right;
+      margin-top:10px;
+    }
+
+    footer {
+      text-align:center;
+      padding:16px;
+      color:#777;
+      margin-top:30px;
     }
   </style>
 </head>
 
 <body>
 
-<div class="card">
-  <div class="error">❌</div>
-  <h1>Pago rechazado</h1>
-  <p>Ocurrió un problema con el pago.<br>Intenta nuevamente.</p>
+<header>
+  <div>Masala • curry & naan</div>
+  <nav>
+    <a href="Raiz.html">Inicio</a>
+    <a href="historia3.html">Catálogo</a>
+  </nav>
+</header>
 
-  <button class="btn" onclick="reintentar()">Volver a intentar</button>
-  <button class="btn" onclick="volver()">Volver al inicio</button>
-</div>
+<h1>Historial de pedidos</h1>
+
+<div class="contenedor" id="historial"></div>
+
+<footer>
+  Masala · Restaurante de comida india · Proyecto académico
+</footer>
 
 <script>
-function reintentar() {
-  window.location.href = "historia6.html"; // vuelve al resumen
-}
+let historial = JSON.parse(localStorage.getItem("historial")) || [];
+let contenedor = document.getElementById("historial");
 
-function volver() {
-  window.location.href = "Raiz.html";
+if (historial.length === 0) {
+  contenedor.innerHTML = "<p>No tienes pedidos registrados.</p>";
+} else {
+  historial.forEach((pedido, i) => {
+    let html = `<div class="pedido">
+      <h3>Pedido #${i + 1}</h3>`;
+
+    let total = 0;
+
+    pedido.forEach(p => {
+      let subtotal = p.precio * p.cantidad;
+      total += subtotal;
+
+      html += `
+        <div class="producto">
+          <div>${p.nombre} x ${p.cantidad}</div>
+          <div>$${subtotal.toLocaleString()}</div>
+        </div>
+      `;
+    });
+
+    html += `<div class="total">Total: $${total.toLocaleString()}</div></div>`;
+    contenedor.innerHTML += html;
+  });
 }
 </script>
 

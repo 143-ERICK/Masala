@@ -2,106 +2,81 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Masala · Pago</title>
+  <title>Masala • Mi perfil</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f6f3ee;
-      color: #222;
-    }
+    body { margin:0; font-family:Arial; background:#f6f3ee; }
 
     header {
-      background: #8b1b1b;
-      color: white;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      background:#8b1b1b;
+      color:white;
+      padding:14px 24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
     }
 
     header a {
-      color: white;
-      text-decoration: none;
-      margin-left: 15px;
-      font-weight: bold;
+      color:white;
+      text-decoration:none;
+      margin-left:16px;
+      font-weight:bold;
+    }
+
+    h1 {
+      text-align:center;
+      margin:25px 0;
     }
 
     .contenedor {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 60px 20px;
+      max-width:700px;
+      margin:auto;
+      background:white;
+      border-radius:14px;
+      padding:25px;
+      box-shadow:0 4px 12px rgba(0,0,0,.12);
     }
 
-    .pago-box {
-      background: white;
-      width: 100%;
-      max-width: 400px;
-      padding: 30px;
-      border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      text-align: center;
+    .dato {
+      margin-bottom:14px;
+      font-size:16px;
     }
 
-    .pago-box h2 {
-      margin-bottom: 25px;
-      color: #8b1b1b;
+    .dato strong {
+      color:#8b1b1b;
     }
 
-    .campo {
-      text-align: left;
-      margin-bottom: 15px;
+    .acciones {
+      margin-top:30px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
     }
 
-    .campo label {
-      font-size: 14px;
-      font-weight: bold;
-      display: block;
-      margin-bottom: 6px;
+    .btn {
+      text-align:center;
+      background:#8b1b1b;
+      color:white;
+      border:none;
+      padding:12px 18px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:14px;
+      text-decoration:none;
     }
 
-    .campo input {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 15px;
-    }
-
-    .fila {
-      display: flex;
-      gap: 10px;
-    }
-
-    .total {
-      font-size: 18px;
-      font-weight: bold;
-      margin: 20px 0;
-    }
-
-    .btn-pagar {
-      width: 100%;
-      padding: 12px;
-      background: #8b1b1b;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .btn-pagar:hover {
-      background: #6f1515;
+    .btn-cerrar {
+      margin-top:25px;
+      width:100%;
+      background:#c0392b;
     }
 
     footer {
-      text-align: center;
-      padding: 16px;
-      font-size: 13px;
-      color: #777;
+      text-align:center;
+      padding:16px;
+      color:#777;
+      margin-top:30px;
     }
   </style>
 </head>
@@ -109,47 +84,35 @@
 <body>
 
 <header>
-  <div><strong>Masala</strong> · curry & naan</div>
+  <div>Masala • curry & naan</div>
   <nav>
     <a href="Raiz.html">Inicio</a>
     <a href="historia3.html">Catálogo</a>
   </nav>
 </header>
 
+<h1>Mi perfil</h1>
+
 <div class="contenedor">
-  <div class="pago-box">
 
-    <h2>Pago con tarjeta</h2>
-
-    <div class="campo">
-      <label>Nombre del titular</label>
-      <input type="text" placeholder="Ej: Erick Hernández" required>
-    </div>
-
-    <div class="campo">
-      <label>Número de tarjeta</label>
-      <input type="text" placeholder="1234 5678 9012 3456" maxlength="19" required>
-    </div>
-
-    <div class="fila">
-      <div class="campo">
-        <label>Vencimiento</label>
-        <input type="text" placeholder="MM/AA" maxlength="5" required>
-      </div>
-
-      <div class="campo">
-        <label>CVV</label>
-        <input type="password" placeholder="123" maxlength="3" required>
-      </div>
-    </div>
-
-    <div class="total">
-      Total a pagar: $<span id="totalPago">0</span>
-    </div>
-
-    <button class="btn-pagar" onclick="procesarPago()">Pagar ahora</button>
-
+  <div class="dato">
+    <strong>Correo:</strong> <span id="correo"></span>
   </div>
+
+  <div class="dato">
+    <strong>Estado de sesión:</strong> Activa
+  </div>
+
+  <div class="acciones">
+    <!-- 👇 Ahora va al historial (historia11) -->
+    <a class="btn" href="historia11.html">📦 Historial</a>
+    <a class="btn" href="historia9.html">🚴 Estado del pedido</a>
+    <a class="btn" href="historia12.html">🔔 Notificaciones</a>
+    <a class="btn" href="historia5.html">🛒 Mi carrito</a>
+  </div>
+
+  <button class="btn btn-cerrar" onclick="cerrarSesion()">Cerrar sesión</button>
+
 </div>
 
 <footer>
@@ -157,22 +120,20 @@
 </footer>
 
 <script>
-  // Traer el total desde el carrito
-  const total = localStorage.getItem("totalCarrito") || 0;
-  document.getElementById("totalPago").innerText = total;
+  // ✅ Mostrar usuario logueado usando la misma key "usuario"
+  const correoSpan = document.getElementById("correo");
+  const usuario = localStorage.getItem("usuario");
 
-  function procesarPago() {
-    if (total == 0) {
-      alert("Tu carrito está vacío");
-      return;
-    }
+  if (!usuario) {
+    correoSpan.innerText = "No has iniciado sesión";
+  } else {
+    correoSpan.innerText = usuario;
+  }
 
-    // Simulación de pago exitoso
-    setTimeout(() => {
-      localStorage.removeItem("carrito");
-      localStorage.removeItem("totalCarrito");
-      window.location.href = "historia11.html"; // Pago aprobado
-    }, 800);
+  // ✅ Cerrar sesión
+  function cerrarSesion() {
+    localStorage.removeItem("usuario");
+    window.location.href = "historia2.html"; // Login
   }
 </script>
 
